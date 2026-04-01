@@ -188,7 +188,7 @@ export function LandingPage() {
               <h3 className="text-xl font-semibold text-foreground mb-1">Lab LINES UTN</h3>
               <p className="text-sm text-primary font-medium mb-3">Arquitecto de Software</p>
               <p className="text-muted-foreground leading-relaxed">
-                Reestructure workflows para un equipo a nivel nacional, mejorando procesos y colaboracion.
+                Lleve a cabo la migracion de arquitectura de software del proyecto "Cursos web scraping".
               </p>
             </article>
             
@@ -204,7 +204,7 @@ export function LandingPage() {
               <h3 className="text-xl font-semibold text-foreground mb-1">Tutor Academico UTN</h3>
               <p className="text-sm text-primary font-medium mb-3">Mentor de Ingresantes</p>
               <p className="text-muted-foreground leading-relaxed">
-                Mentoria a estudiantes ingresantes con 100% de calidez y cuidado en cada encuentro.
+                Mentoria a estudiantes ingresantes, coordinado con las autoridades de la universidad.
               </p>
             </article>
           </div>
@@ -275,9 +275,7 @@ export function LandingPage() {
               Nestle forma parte de mi vida, en cada etapa, me acompaña.
             </p>
             <p className="text-lg text-muted-foreground mt-6 text-pretty">
-              Busco un lugar donde mi capacidad tecnica se combine con proposito real. 
-              Donde cada linea de codigo, cada decision, cada mejora tenga un eco tangible 
-              en el mundo.
+              Mi objetivo es desarrollarme en una organización que defina los más altos estándares de su industria. Admiro profundamente la trayectoria de Nestlé y la robustez de sus procesos y protocolos globales. Es el escenario ideal para aplicar una visión sistémica: un ecosistema donde la eficiencia operativa y la excelencia histórica se cruzan para generar un impacto masivo y real.
             </p>
           </div>
         </div>
@@ -346,7 +344,7 @@ export function LandingPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-1">El Aroma</h3>
                   <p className="text-muted-foreground text-sm">
-                    La huella positiva que dejo en los equipos donde trabajo.
+                    La personalidad y caracteristica que delata un buen cafe Nescafe.
                   </p>
                 </div>
               </div>
