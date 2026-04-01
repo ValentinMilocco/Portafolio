@@ -32,7 +32,7 @@ export function LandingPage() {
         {/* Background Image - La Plata */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="Gemini_Generated_Image_v9arb7v9arb7v9ar.png"
+            src="Gemini_Generated_Image_ecobaoecobaoecob.png"
             alt=""
             className="w-full h-full object-top"
           />
@@ -80,8 +80,16 @@ export function LandingPage() {
       </section>
 
       {/* Mi Trayectoria - Formación */}
-      <section id="trayectoria" className="min-h-screen flex flex-col justify-center py-24 px-6 relative">
-        <div className="max-w-3xl mx-auto">
+      <section id="trayectoria" className="min-h-screen flex flex-col justify-center py-24 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/Gemini_Generated_Image_x5v3q5x5v3q5x5v3.png" 
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/15 via-background/35 to-background" />
+        </div>
+        <div className="max-w-3xl mx-auto relative z-10">
           <div className="flex items-center gap-3 mb-12">
             <div className="p-3 rounded-2xl bg-primary/10">
               <GraduationCap className="w-6 h-6 text-primary" />
@@ -188,7 +196,7 @@ export function LandingPage() {
             <article className="glass rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow group md:col-span-2 lg:col-span-1">
               <div className="aspect-video rounded-2xl bg-muted mb-5 overflow-hidden flex items-center justify-center">
                 <img 
-                  src="/WhatsApp Image 2026-03-30 at 19.32.49.jpeg" 
+                  src="utn-nacional.jpg" 
                   alt="Tutoría Académica UTN"
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                 />
@@ -215,7 +223,7 @@ export function LandingPage() {
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/15 via-background/35 to-background" />
         </div>
         <div className="max-w-3xl mx-auto relative z-10">
           <div className="flex items-center gap-3 mb-12">
@@ -252,7 +260,7 @@ export function LandingPage() {
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/100 via-transparent to-background/100" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/15 via-background/35 to-background" />
         </div>
         <div className="max-w-3xl mx-auto relative z-10">
           <div className="flex items-center gap-3 mb-12">
