@@ -9,10 +9,6 @@ import {
   BarChart3,
   GitBranch,
   FileSpreadsheet,
-  Coffee,
-  Zap,
-  Sparkles,
-  Heart,
   MapPin,
   ChevronDown
 } from "lucide-react"
@@ -252,123 +248,11 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Por qué Nestlé - Visión */}
-      <section id="por-que-nestle" className="py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/ChatGPT Image 31 mar 2026, 11_38_06 a.m..png" 
-            alt=""
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/15 via-background/35 to-background" />
-        </div>
-        <div className="max-w-3xl mx-auto relative z-10">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="p-3 rounded-2xl bg-primary/10">
-              <Heart className="w-6 h-6 text-primary" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-semibold">Por que Nestle</h2>
-          </div>
-          
-          <div className="glass rounded-3xl p-8 md:p-12 shadow-sm">
-            <p className="text-xl md:text-2xl leading-relaxed text-foreground text-pretty">
-              Nestle forma parte de mi vida, en cada etapa, me acompaña.
-            </p>
-            <p className="text-lg text-muted-foreground mt-6 text-pretty">
-              Mi objetivo es desarrollarme en una organización que defina los más altos estándares de su industria. Admiro profundamente la trayectoria de Nestlé y la robustez de sus procesos y protocolos globales. Es el escenario ideal para aplicar una visión sistémica: un ecosistema donde la eficiencia operativa y la excelencia histórica se cruzan para generar un impacto masivo y real.
-            </p>
-          </div>
-        </div>
-        {/* Scroll to next section */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-          <ChevronDown className="w-6 h-6 text-muted-foreground" />
-        </div>
-      </section>
-
-      {/* El Gen Nescafé - Footer */}
-      <section id="gen-nescafe" className="min-h-screen flex flex-col justify-center py-24 px-6 relative">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 rounded-2xl bg-primary/10">
-              <Coffee className="w-6 h-6 text-primary" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-semibold">El Gen Nescafe</h2>
-          </div>
-          <p className="text-muted-foreground text-lg mb-12 max-w-2xl">
-            Mi personalidad contada a traves de lo que mas me representa: el cafe.
-          </p>
-          
-          <div className="grid gap-8 md:grid-cols-2 items-center">
-            {/* Imagen del cafe - compartida */}
-            <div className="aspect-square rounded-3xl overflow-hidden shadow-lg">
-              <img 
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/insumos-para-maquinas-vaso-nescafe-lTk7dClCFGazmJC67WE9NVEt8Vfq3e.webp"
-                alt="Cafe Nescafe"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            
-            {/* Las 3 tarjetas */}
-            <div className="space-y-4">
-              {/* La Pausa */}
-              <div className="glass rounded-2xl p-5 shadow-sm flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-primary/10 shrink-0">
-                  <Coffee className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-1">La Pausa</h3>
-                  <p className="text-muted-foreground text-sm">
-                    El momento para pensar con claridad antes de actuar.
-                  </p>
-                </div>
-              </div>
-              
-              {/* La Energia */}
-              <div className="glass rounded-2xl p-5 shadow-sm flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-primary/10 shrink-0">
-                  <Zap className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-1">La Energia</h3>
-                  <p className="text-muted-foreground text-sm">
-                    El impulso para ejecutar y convertir ideas en realidad.
-                  </p>
-                </div>
-              </div>
-              
-              {/* El Aroma */}
-              <div className="glass rounded-2xl p-5 shadow-sm flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-primary/10 shrink-0">
-                  <Sparkles className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-1">El Aroma</h3>
-                  <p className="text-muted-foreground text-sm">
-                    La personalidad y caracteristica que delata un buen cafe Nescafe.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Scroll to top button */}
-        <button
-          onClick={() => scrollToSection('hero')}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer hover:opacity-70 transition-opacity"
-          aria-label="Volver al inicio"
-        >
-          <ChevronDown className="w-6 h-6 text-muted-foreground rotate-180" />
-        </button>
-      </section>
-
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-border">
-        <div className="max-w-3xl mx-auto text-center space-y-2">
+        <div className="max-w-3xl mx-auto text-center">
           <p className="text-muted-foreground">
-            Hecho con dedicacion para Nestle Jovenes Profesionales
-          </p>
-          <p className="text-sm text-muted-foreground/70">
-            Valentin Milocco - 2026
+            Valentín Milocco · 2026
           </p>
         </div>
       </footer>
