@@ -51,6 +51,15 @@ export function LandingPage() {
     window.requestAnimationFrame(step)
   }
 
+  const focusExperienceDetail = () => {
+    // Wait two frames so React can commit state changes and layout settles before measuring target position.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        smoothScrollToTarget("experience-detail-card", 16)
+      })
+    })
+  }
+
   const experienceTimeline = [
     {
       id: "changaya",
@@ -352,7 +361,7 @@ export function LandingPage() {
                       onClick={() => {
                         setActiveExperienceId(item.id)
                         setExperiencesExpanded(false)
-                        requestAnimationFrame(() => smoothScrollToTarget("experiencia", 12))
+                        focusExperienceDetail()
                       }}
                       className={`group relative w-full rounded-xl border p-3 text-left transition-all duration-300 sm:p-4 ${isActive ? "border-[#3b82f6] bg-[#111111] shadow-[0_0_0_1px_rgba(59,130,246,0.22)]" : "border-[#1f1f1f] bg-[#111111]/75 hover:border-[#3b82f6] hover:-translate-y-0.5"}`}
                     >
@@ -408,7 +417,7 @@ export function LandingPage() {
               </div>
             </article>
 
-            <article className="rounded-2xl border border-[#1f1f1f] bg-white/[0.02] p-4 shadow-[0_0_0_1px_rgba(59,130,246,0.04)] backdrop-blur-sm sm:p-6">
+            <article id="experience-detail-card" className="rounded-2xl border border-[#1f1f1f] bg-white/[0.02] p-4 shadow-[0_0_0_1px_rgba(59,130,246,0.04)] backdrop-blur-sm sm:p-6">
               <div className="mb-6 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                 <div>
                   <p className="text-xs font-mono uppercase tracking-[0.12em] text-[#71717a]">Detalle del hito</p>
