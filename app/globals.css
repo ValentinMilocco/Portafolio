@@ -55,22 +55,40 @@
 }
 
 @layer base {
+  html {
+    @apply w-full overflow-x-hidden;
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground w-full overflow-x-hidden;
     background-image:
       radial-gradient(circle at top, rgba(59, 130, 246, 0.08), transparent 30%),
       linear-gradient(180deg, #0d0d0f 0%, #0a0a0a 42%, #09090b 100%);
     background-attachment: fixed;
   }
-  html {
-    scroll-behavior: smooth;
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+    height: auto;
   }
+
   ::selection {
     background: #3b82f6;
     color: #0a0a0a;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
   }
 }
 

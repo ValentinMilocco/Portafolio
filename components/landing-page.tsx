@@ -197,22 +197,22 @@ export function LandingPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-[#e2e8f0] relative overflow-hidden">
+    <main className="relative min-h-screen overflow-x-clip bg-[#0a0a0a] text-[#e2e8f0]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.14),_transparent_32%),radial-gradient(circle_at_bottom_right,_rgba(14,165,233,0.08),_transparent_28%)]" />
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex flex-col items-center justify-center px-6 py-16 relative overflow-hidden">
+      <section id="hero" className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 pt-20 pb-20 sm:px-6 sm:pt-24 sm:pb-24 md:min-h-screen md:py-16">
         {/* Background Image - La Plata */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="Gemini_Generated_Image_ecobaoecobaoecob.png"
+            src="/Gemini_Generated_Image_ecobaoecobaoecob.png"
             alt=""
-            className="w-full h-full object-top opacity-25"
+            className="h-full w-full object-cover opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/35 via-[#0a0a0a]/65 to-[#0a0a0a]" />
         </div>
-        <div className="max-w-[680px] w-full mx-auto text-center space-y-6 relative z-10">
+        <div className="relative z-10 mx-auto w-full max-w-[680px] space-y-5 text-center sm:space-y-6">
           {/* Profile Image Placeholder */}
-          <div className="relative mx-auto h-28 w-28 md:h-32 md:w-32">
+          <div className="relative mx-auto h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32">
             <div className="relative w-full h-full rounded-full overflow-hidden border border-[#1f1f1f]">
               <img 
                 src="/WhatsApp Image 2026-03-30 at 19.34.03.jpeg" 
@@ -223,18 +223,18 @@ export function LandingPage() {
           </div>
           
           {/* Welcome Text */}
-          <div className="space-y-3">
+          <div className="space-y-2.5 sm:space-y-3">
             <p className="inline-flex items-center px-2.5 py-1 text-xs font-mono border border-[#1f1f1f] text-[#3b82f6] bg-transparent rounded-md">Hola, soy</p>
-            <h1 className="text-3xl font-medium text-[#e2e8f0] text-balance">
+            <h1 className="text-balance text-2xl font-medium text-[#e2e8f0] sm:text-3xl md:text-4xl">
               Valentin Milocco
             </h1>
             <p className="text-sm text-[#71717a]">24 años</p>
           </div>
           
           {/* Personal phrase */}
-          <div className="flex items-center justify-center gap-2 text-[#71717a]">
-            <MapPin className="w-4 h-4 text-[#3b82f6]" />
-            <p className="text-sm text-pretty">
+          <div className="mx-auto flex max-w-sm items-center justify-center gap-2 text-[#71717a]">
+            <MapPin className="h-4 w-4 shrink-0 text-[#3b82f6]" />
+            <p className="text-pretty text-sm leading-6">
               De 9 de Julio a La Plata, construyendo mi camino
             </p>
           </div>
@@ -243,7 +243,7 @@ export function LandingPage() {
         {/* Scroll indicator */}
         <button
           onClick={() => smoothScrollToTarget("trayectoria", 12)}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-10 cursor-pointer hover:opacity-70 transition-opacity"
+          className="z-10 mt-10 cursor-pointer animate-bounce transition-opacity hover:opacity-70 md:absolute md:bottom-12 md:left-1/2 md:mt-0 md:-translate-x-1/2"
           aria-label="Ir a la siguiente sección"
         >
           <ChevronDown className="w-5 h-5 text-[#71717a]" />
@@ -251,7 +251,7 @@ export function LandingPage() {
       </section>
 
       {/* Mi Trayectoria - Formación */}
-      <section id="trayectoria" className="min-h-screen flex flex-col justify-center py-16 px-6 relative overflow-hidden">
+      <section id="trayectoria" className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
         <div className="absolute inset-0 z-0">
           <img 
             src="/Gemini_Generated_Image_x5v3q5x5v3q5x5v3.png" 
@@ -260,8 +260,8 @@ export function LandingPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/45 via-[#0a0a0a]/70 to-[#0a0a0a]" />
         </div>
-        <div className="max-w-[680px] w-full mx-auto relative z-10">
-          <div className="flex items-center gap-3 mb-10">
+        <div className="relative z-10 mx-auto w-full max-w-[680px]">
+          <div className="mb-8 flex items-center gap-3 sm:mb-10">
             <h2 className="text-[11px] font-mono uppercase tracking-[0.1em] text-[#3b82f6]">Mi Trayectoria</h2>
             <div className="h-px bg-[#1f1f1f] flex-1" />
           </div>
@@ -273,13 +273,13 @@ export function LandingPage() {
                 <span className="inline-block px-2.5 py-1 text-xs font-mono border border-[#3b82f6] text-[#3b82f6] bg-transparent rounded-md">
                       En progreso
                 </span>
-                <h3 className="text-base font-medium text-[#e2e8f0]">
+                    <h3 className="text-base font-medium leading-6 text-[#e2e8f0]">
                       Ingeniero en Sistemas de Informacion
                 </h3>
-                <p className="text-sm text-[#71717a]">
+                    <p className="text-sm leading-6 text-[#71717a]">
                       UTN Facultad Regional La Plata
                 </p>
-                <p className="text-sm text-[#3b82f6]">
+                    <p className="text-sm leading-6 text-[#3b82f6]">
                       A una materia de recibirme - 2026
                 </p>
               </div>
@@ -291,10 +291,10 @@ export function LandingPage() {
                 <span className="inline-block px-2.5 py-1 text-xs font-mono border border-[#1f1f1f] text-[#71717a] bg-transparent rounded-md">
                       Completado
                 </span>
-                <h3 className="text-base font-medium text-[#e2e8f0]">
+                <h3 className="text-base font-medium leading-6 text-[#e2e8f0]">
                       Bachiller en Economia y Administracion
                 </h3>
-                <p className="text-sm text-[#71717a]">
+                <p className="text-sm leading-6 text-[#71717a]">
                       Instituto Jesus Sacramentado
                 </p>
               </div>
@@ -302,7 +302,7 @@ export function LandingPage() {
           </div>
         </div>
         {/* Scroll to next section */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="mt-10 flex justify-center md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2">
           <button
             onClick={() => smoothScrollToTarget("experiencia", 12)}
             className="cursor-pointer hover:opacity-70 transition-opacity"
@@ -314,22 +314,22 @@ export function LandingPage() {
       </section>
 
       {/* Experiencia */}
-      <section id="experiencia" className="py-20 px-6 relative overflow-hidden">
+      <section id="experiencia" className="relative overflow-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-20">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.16),_transparent_40%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
         </div>
-        <div className="max-w-[1080px] w-full mx-auto relative z-10">
+        <div className="relative z-10 mx-auto w-full max-w-[1080px]">
           <div className="flex items-center gap-3 mb-6">
             <h2 className="text-[11px] font-mono uppercase tracking-[0.1em] text-[#3b82f6]">Experiencia</h2>
             <div className="h-px bg-[#1f1f1f] flex-1" />
           </div>
 
-          <p className="max-w-2xl text-sm text-[#94a3b8] leading-7 mb-10">
+          <p className="mb-8 max-w-2xl text-sm leading-7 text-[#94a3b8] sm:mb-10">
             Una línea de tiempo de mi recorrido: academia, proyectos reales y construcción de producto. Elegí un hito para ver su detalle.
           </p>
 
-          <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-            <article className="rounded-2xl border border-[#1f1f1f] bg-white/[0.02] p-6 backdrop-blur-sm shadow-[0_0_0_1px_rgba(59,130,246,0.04)]">
+          <div className="grid gap-4 sm:gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+            <article className="rounded-2xl border border-[#1f1f1f] bg-white/[0.02] p-4 shadow-[0_0_0_1px_rgba(59,130,246,0.04)] backdrop-blur-sm sm:p-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#1f1f1f] bg-[#111111] text-[#3b82f6]">
                   <Briefcase className="w-4 h-4" />
@@ -354,9 +354,9 @@ export function LandingPage() {
                         setExperiencesExpanded(false)
                         requestAnimationFrame(() => smoothScrollToTarget("experiencia", 12))
                       }}
-                      className={`group relative w-full rounded-xl border p-4 text-left transition-all duration-300 ${isActive ? "border-[#3b82f6] bg-[#111111] shadow-[0_0_0_1px_rgba(59,130,246,0.22)]" : "border-[#1f1f1f] bg-[#111111]/75 hover:border-[#3b82f6] hover:-translate-y-0.5"}`}
+                      className={`group relative w-full rounded-xl border p-3 text-left transition-all duration-300 sm:p-4 ${isActive ? "border-[#3b82f6] bg-[#111111] shadow-[0_0_0_1px_rgba(59,130,246,0.22)]" : "border-[#1f1f1f] bg-[#111111]/75 hover:border-[#3b82f6] hover:-translate-y-0.5"}`}
                     >
-                      <div className="flex items-start gap-4">
+                      <div className="flex items-start gap-3 sm:gap-4">
                         <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border ${isActive ? "border-[#3b82f6] bg-[#3b82f6]/10 text-[#3b82f6]" : "border-[#1f1f1f] bg-[#0a0a0a] text-[#71717a]"}`}>
                           <span className="text-[11px] font-mono">{String(index + 1).padStart(2, "0")}</span>
                         </div>
@@ -379,7 +379,7 @@ export function LandingPage() {
                           <p className="text-sm leading-6 text-[#94a3b8]">{item.summary}</p>
                         </div>
 
-                        <ArrowRight className={`mt-1 w-4 h-4 shrink-0 transition-transform ${isActive ? "rotate-90 text-[#3b82f6]" : "text-[#71717a] group-hover:text-[#3b82f6]"}`} />
+                        <ArrowRight className={`mt-1 hidden h-4 w-4 shrink-0 transition-transform sm:block ${isActive ? "rotate-90 text-[#3b82f6]" : "text-[#71717a] group-hover:text-[#3b82f6]"}`} />
                       </div>
                     </button>
                   )
@@ -408,13 +408,13 @@ export function LandingPage() {
               </div>
             </article>
 
-            <article className="rounded-2xl border border-[#1f1f1f] bg-white/[0.02] p-6 backdrop-blur-sm shadow-[0_0_0_1px_rgba(59,130,246,0.04)]">
-              <div className="flex items-center justify-between gap-3 mb-6">
+            <article className="rounded-2xl border border-[#1f1f1f] bg-white/[0.02] p-4 shadow-[0_0_0_1px_rgba(59,130,246,0.04)] backdrop-blur-sm sm:p-6">
+              <div className="mb-6 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                 <div>
                   <p className="text-xs font-mono uppercase tracking-[0.12em] text-[#71717a]">Detalle del hito</p>
                   <h3 className="text-base font-medium text-[#e2e8f0]">{selectedExperience.title}</h3>
                 </div>
-                <p className="text-xs font-mono uppercase tracking-[0.08em] text-[#3b82f6]">
+                <p className="text-[11px] font-mono uppercase tracking-[0.08em] text-[#3b82f6] sm:text-xs">
                   {selectedExperience.period}
                 </p>
               </div>
@@ -466,7 +466,7 @@ export function LandingPage() {
             </article>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="mt-10 flex justify-center md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2">
           <button
             onClick={() => smoothScrollToTarget("herramientas", 12)}
             className="cursor-pointer hover:opacity-70 transition-opacity"
@@ -478,7 +478,7 @@ export function LandingPage() {
       </section>
 
       {/* La Caja de Herramientas - Skills */}
-      <section id="herramientas" className="min-h-screen flex flex-col justify-center py-16 px-6 relative overflow-hidden">
+      <section id="herramientas" className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
         <div className="absolute inset-0 z-0">
           <img 
             src="/Gemini_Generated_Image_xwzg20xwzg20xwzg.png" 
@@ -487,8 +487,8 @@ export function LandingPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/45 via-[#0a0a0a]/70 to-[#0a0a0a]" />
         </div>
-        <div className="max-w-[680px] w-full mx-auto relative z-10">
-          <div className="flex items-center gap-3 mb-10">
+        <div className="relative z-10 mx-auto w-full max-w-[680px]">
+          <div className="mb-8 flex items-center gap-3 sm:mb-10">
             <h2 className="text-[11px] font-mono uppercase tracking-[0.1em] text-[#3b82f6]">La Caja de Herramientas</h2>
             <div className="h-px bg-[#1f1f1f] flex-1" />
           </div>
@@ -499,7 +499,7 @@ export function LandingPage() {
                 <p className="mb-3 text-[11px] font-mono uppercase tracking-[0.12em] text-[#71717a]">
                   {category.title}
                 </p>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
                   {category.items.map((item) => (
                     <SkillBadge key={item.label} icon={item.icon} label={item.label} />
                   ))}
@@ -509,7 +509,7 @@ export function LandingPage() {
           </div>
         </div>
         {/* Scroll to next section */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="mt-10 flex justify-center md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2">
           <button
             onClick={() => smoothScrollToTarget("top")}
             className="cursor-pointer hover:opacity-70 transition-opacity"
@@ -521,8 +521,8 @@ export function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-[#1f1f1f]">
-        <div className="max-w-[680px] w-full mx-auto text-center">
+      <footer className="border-t border-[#1f1f1f] px-4 py-8 sm:px-6">
+        <div className="mx-auto w-full max-w-[680px] text-center">
           <p className="text-xs font-mono text-[#3b82f6]">
             Valentín Milocco · 2026
           </p>
@@ -534,7 +534,7 @@ export function LandingPage() {
 
 function SkillBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <span className="inline-flex items-center gap-2 px-3 py-2 text-xs font-mono border border-[#1f1f1f] text-[#71717a] bg-[#111111]/80 rounded-md hover:border-[#3b82f6] hover:text-[#e2e8f0] transition-colors cursor-default">
+    <span className="inline-flex w-full items-center gap-2 rounded-md border border-[#1f1f1f] bg-[#111111]/80 px-3 py-2 text-[11px] leading-tight text-[#71717a] transition-colors hover:border-[#3b82f6] hover:text-[#e2e8f0] sm:text-xs">
       <span className="text-[#3b82f6]">{icon}</span>
       {label}
     </span>
