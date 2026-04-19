@@ -92,6 +92,12 @@
   }
 }
 
+@media (max-width: 425px) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

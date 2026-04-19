@@ -19,12 +19,26 @@ import {
 export function LandingPage() {
   const [activeExperienceId, setActiveExperienceId] = useState("changaya")
   const [experiencesExpanded, setExperiencesExpanded] = useState(true)
+  const MOBILE_L_MAX_WIDTH = 425
 
   const smoothScrollToTarget = (targetId: string, offset = 0) => {
+    const targetElement = targetId === "top" ? null : document.getElementById(targetId)
+
+    if (window.matchMedia(`(max-width: ${MOBILE_L_MAX_WIDTH}px)`).matches) {
+      const targetY =
+        targetId === "top"
+          ? 0
+          : Math.max((targetElement?.getBoundingClientRect().top ?? 0) + window.scrollY - offset, 0)
+
+      window.scrollTo({ top: targetY, behavior: "auto" })
+
+      return
+    }
+
     const targetY =
       targetId === "top"
         ? 0
-        : Math.max((document.getElementById(targetId)?.getBoundingClientRect().top ?? 0) + window.scrollY - offset, 0)
+        : Math.max((targetElement?.getBoundingClientRect().top ?? 0) + window.scrollY - offset, 0)
 
     const startY = window.scrollY
     const distance = targetY - startY
@@ -51,11 +65,20 @@ export function LandingPage() {
     window.requestAnimationFrame(step)
   }
 
+  const jumpToTarget = (targetId: string, offset = 0) => {
+    const targetY =
+      targetId === "top"
+        ? 0
+        : Math.max((document.getElementById(targetId)?.getBoundingClientRect().top ?? 0) + window.scrollY - offset, 0)
+
+    window.scrollTo({ top: targetY, behavior: "auto" })
+  }
+
   const focusExperienceDetail = () => {
     // Wait two frames so React can commit state changes and layout settles before measuring target position.
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        smoothScrollToTarget("experience-detail-card", 16)
+        jumpToTarget("experience-detail-card", 16)
       })
     })
   }
@@ -260,7 +283,7 @@ export function LandingPage() {
       </section>
 
       {/* Mi Trayectoria - Formación */}
-      <section id="trayectoria" className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
+      <section id="trayectoria" className="relative flex min-h-[100svh] flex-col justify-center overflow-x-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
         <div className="absolute inset-0 z-0">
           <img 
             src="/Gemini_Generated_Image_x5v3q5x5v3q5x5v3.png" 
@@ -311,10 +334,11 @@ export function LandingPage() {
           </div>
         </div>
         {/* Scroll to next section */}
-        <div className="mt-10 flex justify-center md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2">
+        <div className="relative z-20 mt-8 flex justify-center pb-2 md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2 md:pb-0">
           <button
+            type="button"
             onClick={() => smoothScrollToTarget("experiencia", 12)}
-            className="cursor-pointer hover:opacity-70 transition-opacity"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f1f1f] bg-[#0a0a0a]/85 text-[#94a3b8] shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm transition hover:border-[#3b82f6] hover:text-[#e2e8f0]"
             aria-label="Ir a experiencia"
           >
             <ChevronDown className="w-5 h-5 text-[#71717a]" />
@@ -475,10 +499,11 @@ export function LandingPage() {
             </article>
           </div>
         </div>
-        <div className="mt-10 flex justify-center md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2">
+        <div className="relative z-20 mt-8 flex justify-center pb-2 md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2 md:pb-0">
           <button
+            type="button"
             onClick={() => smoothScrollToTarget("herramientas", 12)}
-            className="cursor-pointer hover:opacity-70 transition-opacity"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f1f1f] bg-[#0a0a0a]/85 text-[#94a3b8] shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm transition hover:border-[#3b82f6] hover:text-[#e2e8f0]"
             aria-label="Ir a herramientas"
           >
             <ChevronDown className="w-5 h-5 text-[#71717a]" />
@@ -487,7 +512,7 @@ export function LandingPage() {
       </section>
 
       {/* La Caja de Herramientas - Skills */}
-      <section id="herramientas" className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
+      <section id="herramientas" className="relative flex min-h-[100svh] flex-col justify-center overflow-x-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
         <div className="absolute inset-0 z-0">
           <img 
             src="/Gemini_Generated_Image_xwzg20xwzg20xwzg.png" 
@@ -518,10 +543,11 @@ export function LandingPage() {
           </div>
         </div>
         {/* Scroll to next section */}
-        <div className="mt-10 flex justify-center md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2">
+        <div className="relative z-20 mt-8 flex justify-center pb-2 md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2 md:pb-0">
           <button
+            type="button"
             onClick={() => smoothScrollToTarget("top")}
-            className="cursor-pointer hover:opacity-70 transition-opacity"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f1f1f] bg-[#0a0a0a]/85 text-[#94a3b8] shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm transition hover:border-[#3b82f6] hover:text-[#e2e8f0]"
             aria-label="Volver al inicio"
           >
             <ChevronUp className="w-5 h-5 text-[#71717a]" />
