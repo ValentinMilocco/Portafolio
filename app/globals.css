@@ -4,32 +4,31 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Warm cream palette */
-  --background: #F5F1E8;
-  --foreground: #3D3833;
-  --card: rgba(255, 255, 255, 0.7);
-  --card-foreground: #3D3833;
-  --popover: #FFFFFF;
-  --popover-foreground: #3D3833;
-  --primary: #A0826D;
-  --primary-foreground: #FFFFFF;
-  --secondary: #EDE9E0;
-  --secondary-foreground: #3D3833;
-  --muted: #E8E4DB;
-  --muted-foreground: #8B8680;
-  --accent: #A0826D;
-  --accent-foreground: #FFFFFF;
-  --destructive: #D97757;
-  --destructive-foreground: #FFFFFF;
-  --border: rgba(139, 134, 128, 0.2);
-  --input: rgba(139, 134, 128, 0.15);
-  --ring: #A0826D;
-  --radius: 1rem;
+  --background: #0a0a0a;
+  --foreground: #e2e8f0;
+  --card: #111111;
+  --card-foreground: #e2e8f0;
+  --popover: #111111;
+  --popover-foreground: #e2e8f0;
+  --primary: #3b82f6;
+  --primary-foreground: #0a0a0a;
+  --secondary: #111111;
+  --secondary-foreground: #e2e8f0;
+  --muted: #111111;
+  --muted-foreground: #71717a;
+  --accent: #3b82f6;
+  --accent-foreground: #0a0a0a;
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
+  --border: #1f1f1f;
+  --input: #1f1f1f;
+  --ring: #3b82f6;
+  --radius: 0.5rem;
 }
 
 @theme inline {
   --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --font-mono: 'GeistMono', 'Geist Mono', 'Geist Mono Fallback', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -65,12 +64,25 @@
   html {
     scroll-behavior: smooth;
   }
+  ::selection {
+    background: #3b82f6;
+    color: #0a0a0a;
+  }
 }
 
-/* Glassmorphism utility */
-.glass {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
 }
