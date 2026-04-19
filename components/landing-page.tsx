@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { 
   ArrowRight,
   Briefcase,
@@ -235,10 +236,13 @@ export function LandingPage() {
       <section id="hero" className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 pt-20 pb-20 sm:px-6 sm:pt-24 sm:pb-24 md:min-h-screen md:py-16">
         {/* Background Image - La Plata */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image
             src="/Gemini_Generated_Image_ecobaoecobaoecob.png"
             alt=""
-            className="h-full w-full object-cover opacity-25"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/35 via-[#0a0a0a]/65 to-[#0a0a0a]" />
         </div>
@@ -246,10 +250,13 @@ export function LandingPage() {
           {/* Profile Image Placeholder */}
           <div className="relative mx-auto h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32">
             <div className="relative w-full h-full rounded-full overflow-hidden border border-[#1f1f1f]">
-              <img 
-                src="/WhatsApp Image 2026-03-30 at 19.34.03.jpeg" 
+              <Image
+                src="/WhatsApp Image 2026-03-30 at 19.34.03.jpeg"
                 alt="Foto de perfil de Valentin Milocco"
-                className="w-full h-full object-cover"
+                fill
+                priority
+                sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, 128px"
+                className="object-cover"
               />
             </div>
           </div>
@@ -285,10 +292,12 @@ export function LandingPage() {
       {/* Mi Trayectoria - Formación */}
       <section id="trayectoria" className="relative flex min-h-[100svh] flex-col justify-center overflow-x-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/Gemini_Generated_Image_x5v3q5x5v3q5x5v3.png" 
+          <Image
+            src="/Gemini_Generated_Image_x5v3q5x5v3q5x5v3.png"
             alt=""
-            className="w-full h-full object-cover opacity-20"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/45 via-[#0a0a0a]/70 to-[#0a0a0a]" />
         </div>
@@ -514,10 +523,12 @@ export function LandingPage() {
       {/* La Caja de Herramientas - Skills */}
       <section id="herramientas" className="relative flex min-h-[100svh] flex-col justify-center overflow-x-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/Gemini_Generated_Image_xwzg20xwzg20xwzg.png" 
+          <Image
+            src="/Gemini_Generated_Image_xwzg20xwzg20xwzg.png"
             alt=""
-            className="w-full h-full object-cover opacity-20"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/45 via-[#0a0a0a]/70 to-[#0a0a0a]" />
         </div>
