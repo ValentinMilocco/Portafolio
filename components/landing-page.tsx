@@ -12,115 +12,139 @@ import {
   FileSpreadsheet,
   MapPin,
   ChevronDown,
-  Code2,
+  ChevronUp,
   Sparkles
 } from "lucide-react"
 
 export function LandingPage() {
-  const [activeProject, setActiveProject] = useState<string | null>("ChangaYa")
+  const [activeExperienceId, setActiveExperienceId] = useState("changaya")
+  const [experiencesExpanded, setExperiencesExpanded] = useState(true)
 
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+  const smoothScrollToTarget = (targetId: string, offset = 0) => {
+    const targetY =
+      targetId === "top"
+        ? 0
+        : Math.max((document.getElementById(targetId)?.getBoundingClientRect().top ?? 0) + window.scrollY - offset, 0)
+
+    const startY = window.scrollY
+    const distance = targetY - startY
+    const duration = 900
+    let startTime: number | null = null
+
+    const easeInOutCubic = (t: number) => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
     }
-  };
 
-  const currentExperience = [
-    {
-      icon: <Users className="w-4 h-4" />,
-      label: "Actual",
-      title: "Tutor Académico UTN",
-      description: "Acompaño a estudiantes ingresantes y coordiné la experiencia de adaptación dentro de la facultad."
-    },
-    {
-      icon: <Briefcase className="w-4 h-4" />,
-      label: "Academia",
-      title: "Arquitecto de Software en Lab LINES UTN",
-      description: "Llevé adelante la migración de arquitectura del proyecto Cursos web scraping."
-    },
-    {
-      icon: <Sparkles className="w-4 h-4" />,
-      label: "Producto propio",
-      title: "Co-creador y Desarrollador de ChangaYa!",
-      description: "Un proyecto nacido de la amistad que se volvió real y que gestioné de punta a punta."
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp
+      const elapsed = timestamp - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = easeInOutCubic(progress)
+
+      window.scrollTo({ top: startY + distance * eased })
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step)
+      }
     }
-  ]
 
-  const githubProjects = [
+    window.requestAnimationFrame(step)
+  }
+
+  const experienceTimeline = [
     {
-      name: "ChangaYa",
-      href: "https://github.com/ValentinMilocco/ChangaYa",
-      language: "TypeScript",
-      context: "Proyecto final UTN FRLP",
-      description: "Plataforma móvil que conecta prestadores de servicios con clientes para tareas puntuales. Arquitectura de microservicios, IA para matching y enfoque en escalabilidad.",
-      readme: "Fork con fines de portfolio profesional. El README lo presenta como una app móvil para conectar personas que necesitan resolver tareas puntuales con trabajadores independientes, con foco en microservicios, IA para matching y ciberseguridad.",
-      stack: ["TypeScript", "JavaScript", "Expo", "React Native", "Supabase", "Socket.IO"],
-      contribution: [
-        "Desarrollo de publicación y gestión de changas.",
-        "Autenticación y flujo de perfiles de usuario.",
-        "Módulos de chat en tiempo real y mejora de UX.",
-        "Integración frontend-backend y refactor general."
+      id: "changaya",
+      period: "03/2025 - 02/2026",
+      title: "ChangaYa",
+      role: "Co-creador y desarrollador",
+      track: "Producto",
+      summary: "Proyecto final UTN FRLP orientado a resolver tareas puntuales con un enfoque mobile-first y arquitectura escalable.",
+      stack: ["TypeScript", "React Native", "Expo", "Supabase", "Socket.IO"],
+      highlights: [
+        "Publicación y gestión de changas.",
+        "Autenticación y flujo de perfiles.",
+        "Chat en tiempo real e integración frontend-backend."
       ],
+      repo: "https://github.com/ValentinMilocco/ChangaYa",
     },
     {
-      name: "vetsoft",
-      href: "https://github.com/ValentinMilocco/vetsoft",
-      language: "Python",
-      context: "Django",
-      description: "Aplicación web para gestión de veterinarias. Permite administrar entidades del dominio con validaciones y flujo académico de trabajo colaborativo.",
-      readme: "Fork para portfolio profesional. El README lo describe como una app web para gestión de veterinarias, enfocada en validaciones de negocio, cobertura de pruebas y despliegue con Docker.",
-      stack: ["Python", "Django", "SQLite", "HTML", "Playwright", "Ruff", "Docker"],
-      contribution: [
-        "Validaciones de dominio y formularios.",
-        "Corrección de bugs de visualización y templates.",
-        "Mejora de cobertura de pruebas y calidad estática.",
+      id: "webscrapping",
+      period: "03/2025 - 01/2026",
+      title: "Webscrapping - Lab LINES UTN",
+      role: "Arquitecto de software",
+      track: "Academia",
+      summary: "Migración y ordenamiento de la arquitectura del proyecto de cursos de web scraping, con foco en mantenibilidad.",
+      stack: ["Arquitectura de Software", "Refactor", "Buenas prácticas", "Gestión técnica"],
+      highlights: [
+        "Reorganización estructural del proyecto.",
+        "Mejora de calidad técnica y legibilidad.",
+        "Acompañamiento del ciclo académico del laboratorio."
       ],
+      repo: null,
     },
     {
-      name: "dondeComo",
-      href: "https://github.com/ValentinMilocco/dondeComo",
-      language: "TypeScript",
-      context: "Expo + React Native",
-      description: "Aplicación móvil con autenticación, búsqueda de ubicaciones precisas y navegación modular. Construida con contextos y hooks.",
-      readme: "Fork para portfolio profesional. El README lo presenta como una app móvil para descubrir restaurantes mediante geolocalización, con autenticación, navegación modular y estado global con contextos/hooks.",
-      stack: ["TypeScript", "React Native", "Expo", "Kotlin", "JavaScript", "Google Maps API"],
-      contribution: [
+      id: "dondecomo",
+      period: "08/2024 - 02/2025",
+      title: "dondeComo",
+      role: "Contributor mobile",
+      track: "Mobile",
+      summary: "Aplicación mobile para descubrir restaurantes con geolocalización, navegación modular y autenticación.",
+      stack: ["TypeScript", "React Native", "Expo", "Google Maps API", "Kotlin"],
+      highlights: [
         "Búsqueda y filtrado de resultados.",
-        "Mejora de la experiencia visual en listas y pantallas.",
-        "Autenticación y contextos de datos.",
-        "Optimización de componentes y refactor."
+        "Mejora de experiencia en listas y pantallas.",
+        "Optimización de componentes y contexto global."
       ],
+      repo: "https://github.com/ValentinMilocco/dondeComo",
     },
     {
-      name: "Presentacion-Nestle",
-      href: "https://github.com/ValentinMilocco/Presentacion-Nestle",
-      language: "TypeScript",
-      context: "Proyecto personal",
-      description: "Mini proyecto sobre mi presentación para Jóvenes Profesionales Nestlé 2026.",
-      readme: "Proyecto personal de presentación para Jóvenes Profesionales Nestlé 2026. No se ve un README extenso en la raíz, así que el 'About' del repo funciona como la descripción principal pública.",
-      stack: ["TypeScript", "CSS", "JavaScript", "Deploy en Vercel", "GitHub Copilot", "Claude (IA)"],
-      contribution: [
-        "Proyecto individual, sin contributors adicionales visibles.",
-        "Orientado a presentación personal y comunicación.",
-        "Sirve como pieza breve dentro del portfolio." 
+      id: "vetsoft",
+      period: "03/2024 - 07/2024",
+      title: "vetsoft",
+      role: "Contributor backend",
+      track: "Web",
+      summary: "Aplicación web para gestión de veterinarias con validaciones de negocio, pruebas y despliegue local.",
+      stack: ["Python", "Django", "SQLite", "Docker", "Playwright", "Ruff"],
+      highlights: [
+        "Validaciones de dominio y formularios.",
+        "Corrección de templates y mensajes.",
+        "Mejora de cobertura de pruebas y calidad estática."
       ],
+      repo: "https://github.com/ValentinMilocco/vetsoft",
     },
     {
-      name: "BancoFrontend",
-      href: "https://github.com/ValentinMilocco/BancoFrontend",
-      language: "JavaScript",
-      context: "React + Bootstrap",
-      description: "Aplicación bancaria para gestionar clientes, cuentas, saldos, transferencias y movimientos con una interfaz clásica y funcional.",
-      readme: "Fork para portfolio profesional. El repositorio se presenta como una app bancaria en React para gestionar clientes, sesiones, cuentas, saldos, transferencias y movimientos con consumos de APIs.",
-      stack: ["JavaScript", "React", "React Router", "Bootstrap", "CSS", "HTML"],
-      contribution: [
-        "Ajustes del frontend bancario y refinamiento visual.",
-        "Navegación entre vistas de clientes, cuentas y movimientos.",
-        "Consumo de APIs para autenticación y operaciones financieras."
+      id: "bancofront",
+      period: "07/2023 - 02/2024",
+      title: "BancoFrontend",
+      role: "Frontend developer",
+      track: "Web",
+      summary: "Frontend bancario para operaciones de clientes, cuentas y transferencias con rutas y consumo de APIs.",
+      stack: ["JavaScript", "React", "React Router", "Bootstrap"],
+      highlights: [
+        "Navegación por vistas operativas.",
+        "Integración con APIs de autenticación y operaciones.",
+        "Refinamiento de interfaz para flujo bancario."
       ],
+      repo: "https://github.com/ValentinMilocco/BancoFrontend",
+    },
+    {
+      id: "tutorias",
+      period: "01/2023 - 01/2024",
+      title: "Tutorías UTN",
+      role: "Mentor de ingresantes",
+      track: "Formación",
+      summary: "Acompañamiento de estudiantes en su ingreso universitario, coordinando contenidos y seguimiento académico.",
+      stack: ["Mentoría", "Comunicación", "Coordinación", "Trabajo en equipo"],
+      highlights: [
+        "Seguimiento de ingresantes y dudas académicas.",
+        "Apoyo en adaptación al ritmo universitario.",
+        "Trabajo conjunto con equipo docente y autoridades."
+      ],
+      repo: null,
     },
   ]
+
+  const selectedExperience = experienceTimeline.find((item) => item.id === activeExperienceId) ?? experienceTimeline[0]
 
   const toolCategories = [
     {
@@ -188,7 +212,7 @@ export function LandingPage() {
         </div>
         <div className="max-w-[680px] w-full mx-auto text-center space-y-6 relative z-10">
           {/* Profile Image Placeholder */}
-          <div className="relative mx-auto w-20 h-20">
+          <div className="relative mx-auto h-28 w-28 md:h-32 md:w-32">
             <div className="relative w-full h-full rounded-full overflow-hidden border border-[#1f1f1f]">
               <img 
                 src="/WhatsApp Image 2026-03-30 at 19.34.03.jpeg" 
@@ -218,7 +242,7 @@ export function LandingPage() {
         
         {/* Scroll indicator */}
         <button
-          onClick={() => scrollToSection('trayectoria')}
+          onClick={() => smoothScrollToTarget("trayectoria", 12)}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-10 cursor-pointer hover:opacity-70 transition-opacity"
           aria-label="Ir a la siguiente sección"
         >
@@ -280,7 +304,7 @@ export function LandingPage() {
         {/* Scroll to next section */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <button
-            onClick={() => scrollToSection('experiencia')}
+            onClick={() => smoothScrollToTarget("experiencia", 12)}
             className="cursor-pointer hover:opacity-70 transition-opacity"
             aria-label="Ir a experiencia"
           >
@@ -301,126 +325,155 @@ export function LandingPage() {
           </div>
 
           <p className="max-w-2xl text-sm text-[#94a3b8] leading-7 mb-10">
-            Acá se cruzan mi experiencia actual con lo que publiqué en GitHub.
+            Una línea de tiempo de mi recorrido: academia, proyectos reales y construcción de producto. Elegí un hito para ver su detalle.
           </p>
 
-          <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
             <article className="rounded-2xl border border-[#1f1f1f] bg-white/[0.02] p-6 backdrop-blur-sm shadow-[0_0_0_1px_rgba(59,130,246,0.04)]">
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#1f1f1f] bg-[#111111] text-[#3b82f6]">
                   <Briefcase className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-xs font-mono uppercase tracking-[0.12em] text-[#71717a]">Trayectoria actual</p>
-                  <h3 className="text-base font-medium text-[#e2e8f0]">Lo que estoy haciendo hoy</h3>
+                  <p className="text-xs font-mono uppercase tracking-[0.12em] text-[#71717a]">Timeline profesional</p>
+                  <h3 className="text-base font-medium text-[#e2e8f0]">2023 - 2026</h3>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                {currentExperience.map((item) => (
-                  <div key={item.title} className="rounded-xl border border-[#1f1f1f] bg-[#111111] p-4 transition-colors hover:border-[#3b82f6]">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#1f1f1f] bg-[#0a0a0a] text-[#3b82f6]">
-                        {item.icon}
+              <div className="space-y-3">
+                {(experiencesExpanded ? experienceTimeline : [selectedExperience]).map((item, index) => {
+                  const isActive = selectedExperience.id === item.id
+
+                  return (
+                    <button
+                      key={item.id}
+                      id={`experience-${item.id}`}
+                      type="button"
+                      onClick={() => {
+                        setActiveExperienceId(item.id)
+                        setExperiencesExpanded(false)
+                        requestAnimationFrame(() => smoothScrollToTarget("experiencia", 12))
+                      }}
+                      className={`group relative w-full rounded-xl border p-4 text-left transition-all duration-300 ${isActive ? "border-[#3b82f6] bg-[#111111] shadow-[0_0_0_1px_rgba(59,130,246,0.22)]" : "border-[#1f1f1f] bg-[#111111]/75 hover:border-[#3b82f6] hover:-translate-y-0.5"}`}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border ${isActive ? "border-[#3b82f6] bg-[#3b82f6]/10 text-[#3b82f6]" : "border-[#1f1f1f] bg-[#0a0a0a] text-[#71717a]"}`}>
+                          <span className="text-[11px] font-mono">{String(index + 1).padStart(2, "0")}</span>
+                        </div>
+
+                        <div className="min-w-0 flex-1 space-y-2">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className={`text-[11px] font-mono uppercase tracking-[0.1em] ${isActive ? "text-[#3b82f6]" : "text-[#94a3b8]"}`}>{item.period}</p>
+                            <span className="rounded-md border border-[#1f1f1f] px-2 py-1 text-[10px] font-mono uppercase tracking-[0.08em] text-[#71717a]">
+                              {item.track}
+                            </span>
+                            {isActive && (
+                              <span className="rounded-md border border-[#3b82f6] px-2 py-1 text-[10px] font-mono uppercase tracking-[0.08em] text-[#3b82f6]">
+                                Seleccionado
+                              </span>
+                            )}
+                          </div>
+
+                          <h4 className="text-sm font-medium text-[#e2e8f0]">{item.title}</h4>
+                          <p className="text-sm text-[#94a3b8]">{item.role}</p>
+                          <p className="text-sm leading-6 text-[#94a3b8]">{item.summary}</p>
+                        </div>
+
+                        <ArrowRight className={`mt-1 w-4 h-4 shrink-0 transition-transform ${isActive ? "rotate-90 text-[#3b82f6]" : "text-[#71717a] group-hover:text-[#3b82f6]"}`} />
                       </div>
-                      <div className="space-y-2">
-                        <span className="inline-flex items-center rounded-md border border-[#1f1f1f] px-2.5 py-1 text-[11px] font-mono uppercase tracking-[0.08em] text-[#71717a]">
-                          {item.label}
-                        </span>
-                        <h4 className="text-sm font-medium text-[#e2e8f0]">{item.title}</h4>
-                        <p className="text-sm leading-6 text-[#94a3b8]">{item.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                    </button>
+                  )
+                })}
+
+                <div className="flex justify-center pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setExperiencesExpanded((current) => !current)}
+                    className="inline-flex items-center gap-2 rounded-full border border-[#1f1f1f] bg-[#0a0a0a] px-3 py-2 text-[11px] font-mono uppercase tracking-[0.08em] text-[#94a3b8] transition-colors hover:border-[#3b82f6] hover:text-[#e2e8f0]"
+                    aria-label={experiencesExpanded ? "Ocultar experiencias" : "Ver todas las experiencias"}
+                  >
+                    {experiencesExpanded ? (
+                      <>
+                        <ChevronUp className="w-4 h-4" />
+                        Ocultar
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="w-4 h-4" />
+                        Ver todas
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </article>
 
             <article className="rounded-2xl border border-[#1f1f1f] bg-white/[0.02] p-6 backdrop-blur-sm shadow-[0_0_0_1px_rgba(59,130,246,0.04)]">
               <div className="flex items-center justify-between gap-3 mb-6">
                 <div>
-                  <p className="text-xs font-mono uppercase tracking-[0.12em] text-[#71717a]">GitHub público</p>
-                  <h3 className="text-base font-medium text-[#e2e8f0]">Repos pinned y visibles</h3>
+                  <p className="text-xs font-mono uppercase tracking-[0.12em] text-[#71717a]">Detalle del hito</p>
+                  <h3 className="text-base font-medium text-[#e2e8f0]">{selectedExperience.title}</h3>
                 </div>
-                <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-[#71717a]">
-                  <Code2 className="w-4 h-4 text-[#3b82f6]" />
-                  5 proyectos
-                </div>
+                <p className="text-xs font-mono uppercase tracking-[0.08em] text-[#3b82f6]">
+                  {selectedExperience.period}
+                </p>
               </div>
 
-              <div className="grid gap-4">
-                {githubProjects.map((project) => (
-                  <article
-                    key={project.name}
-                    className="group rounded-xl border border-[#1f1f1f] bg-[#111111] transition-all duration-200 hover:border-[#3b82f6]"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setActiveProject(activeProject === project.name ? null : project.name)}
-                      className="w-full rounded-xl p-4 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]/70"
-                      aria-expanded={activeProject === project.name}
-                      aria-controls={`project-details-${project.name}`}
+              <div key={selectedExperience.id} className="animate-in fade-in slide-in-from-bottom-2 duration-500">
+                <p className="text-sm leading-6 text-[#94a3b8] mb-5">
+                  {selectedExperience.summary}
+                </p>
+
+                <div className="space-y-5">
+                  <div>
+                    <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-[#71717a] mb-2">Tecnologías y enfoque</p>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedExperience.stack.map((tech) => (
+                        <span key={tech} className="rounded-md border border-[#1f1f1f] bg-[#111111] px-2.5 py-1 text-[11px] font-mono uppercase tracking-[0.08em] text-[#e2e8f0]">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-[#71717a] mb-2">Aportes clave</p>
+                    <ul className="space-y-2 text-sm leading-6 text-[#94a3b8]">
+                      {selectedExperience.highlights.map((item) => (
+                        <li key={item} className="flex gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#3b82f6]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {selectedExperience.repo ? (
+                    <a
+                      href={selectedExperience.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-md border border-[#3b82f6] bg-[#3b82f6] px-3 py-2 text-xs font-mono uppercase tracking-[0.08em] text-[#0a0a0a] transition-opacity hover:opacity-90"
                     >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="space-y-3">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <h4 className="text-sm font-medium text-[#e2e8f0]">{project.name}</h4>
-                            <span className="rounded-md border border-[#1f1f1f] px-2 py-1 text-[11px] font-mono uppercase tracking-[0.08em] text-[#71717a]">
-                              {project.language}
-                            </span>
-                            <span className="rounded-md border border-[#1f1f1f] px-2 py-1 text-[11px] font-mono uppercase tracking-[0.08em] text-[#3b82f6]">
-                              {project.context}
-                            </span>
-                          </div>
-                          <p className="text-sm leading-6 text-[#94a3b8]">{project.description}</p>
-                        </div>
-                        <ArrowRight className={`mt-1 w-4 h-4 text-[#71717a] transition-transform ${activeProject === project.name ? "rotate-90 text-[#3b82f6]" : "group-hover:translate-x-0.5 group-hover:text-[#3b82f6]"}`} />
-                      </div>
-                    </button>
-
-                    {activeProject === project.name && (
-                      <div id={`project-details-${project.name}`} className="border-t border-[#1f1f1f] px-4 pb-4 pt-0">
-                        <div className="rounded-xl border border-[#1f1f1f] bg-[#0a0a0a] p-4">
-                          <div className="space-y-5 text-sm leading-6 text-[#94a3b8]">
-                            <div>
-                              <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-[#71717a] mb-2">README</p>
-                              <p>{project.readme}</p>
-                            </div>
-
-                            <div>
-                              <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-[#71717a] mb-2">Tecnologías</p>
-                              <div className="flex flex-wrap gap-2">
-                                {project.stack.map((tech) => (
-                                  <span key={tech} className="rounded-md border border-[#1f1f1f] bg-[#111111] px-2.5 py-1 text-[11px] font-mono uppercase tracking-[0.08em] text-[#e2e8f0]">
-                                    {tech}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-
-                            <div>
-                              <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-[#71717a] mb-2">Mi contribución</p>
-                              <ul className="space-y-2">
-                                {project.contribution.map((detail) => (
-                                  <li key={detail} className="flex gap-2">
-                                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#3b82f6]" />
-                                    <span>{detail}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </article>
-                ))}
+                      Ver repositorio
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  ) : (
+                    <p className="text-xs text-[#71717a]">Este hito corresponde a una experiencia académica sin repositorio público asociado.</p>
+                  )}
+                </div>
               </div>
             </article>
           </div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <ChevronDown className="w-5 h-5 text-[#71717a]" />
+          <button
+            onClick={() => smoothScrollToTarget("herramientas", 12)}
+            className="cursor-pointer hover:opacity-70 transition-opacity"
+            aria-label="Ir a herramientas"
+          >
+            <ChevronDown className="w-5 h-5 text-[#71717a]" />
+          </button>
         </div>
       </section>
 
@@ -457,7 +510,13 @@ export function LandingPage() {
         </div>
         {/* Scroll to next section */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <ChevronDown className="w-5 h-5 text-[#71717a]" />
+          <button
+            onClick={() => smoothScrollToTarget("top")}
+            className="cursor-pointer hover:opacity-70 transition-opacity"
+            aria-label="Volver al inicio"
+          >
+            <ChevronUp className="w-5 h-5 text-[#71717a]" />
+          </button>
         </div>
       </section>
 
