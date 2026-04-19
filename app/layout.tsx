@@ -8,7 +8,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'Valentín Milocco | Portfolio Personal',
-  description: 'De 9 de Julio a La Plata, construyendo soluciones con calidez y capacidad excepcional',
+  description: 'Portfolio de Valentín Milocco: formación en UTN, experiencia actual y proyectos públicos en GitHub.',
   generator: 'v0.app',
   icons: {
     icon: [
