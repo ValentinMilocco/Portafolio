@@ -208,6 +208,7 @@ export function LandingPage() {
       items: [
         { icon: <Database className="w-4 h-4" />, label: "Python" },
         { icon: <Database className="w-4 h-4" />, label: "Django" },
+        { icon: <Database className="w-4 h-4" />, label: "PostgreSQL" },
         { icon: <Database className="w-4 h-4" />, label: "SQL" },
         { icon: <Database className="w-4 h-4" />, label: "SQLite" },
         { icon: <Rocket className="w-4 h-4" />, label: "Supabase" },
@@ -234,18 +235,13 @@ export function LandingPage() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.14),_transparent_32%),radial-gradient(circle_at_bottom_right,_rgba(14,165,233,0.08),_transparent_28%)]" />
       {/* Hero Section */}
       <section id="hero" className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 pt-20 pb-20 sm:px-6 sm:pt-24 sm:pb-24 md:min-h-screen md:py-16">
-        {/* Background Image - La Plata */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/Gemini_Generated_Image_ecobaoecobaoecob.png"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover opacity-25"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/35 via-[#0a0a0a]/65 to-[#0a0a0a]" />
-        </div>
+        <SectionBackdrop
+          src="/Gemini_Generated_Image_ecobaoecobaoecob.png"
+          priority
+          imageOpacity={0.25}
+          imagePosition="center"
+          overlayVariant="hero"
+        />
         <div className="relative z-10 mx-auto w-full max-w-[680px] space-y-5 text-center sm:space-y-6">
           {/* Profile Image Placeholder */}
           <div className="relative mx-auto h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32">
@@ -291,16 +287,12 @@ export function LandingPage() {
 
       {/* Mi Trayectoria - Formación */}
       <section id="trayectoria" className="relative flex min-h-[100svh] flex-col justify-center overflow-x-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/Gemini_Generated_Image_x5v3q5x5v3q5x5v3.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/45 via-[#0a0a0a]/70 to-[#0a0a0a]" />
-        </div>
+        <SectionBackdrop
+          src="/Gemini_Generated_Image_x5v3q5x5v3q5x5v3.png"
+          imageOpacity={0.2}
+          imagePosition="center"
+          overlayVariant="default"
+        />
         <div className="relative z-10 mx-auto w-full max-w-[680px]">
           <div className="mb-8 flex items-center gap-3 sm:mb-10">
             <h2 className="text-[11px] font-mono uppercase tracking-[0.1em] text-[#3b82f6]">Mi Trayectoria</h2>
@@ -357,9 +349,12 @@ export function LandingPage() {
 
       {/* Experiencia */}
       <section id="experiencia" className="relative overflow-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-20">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.16),_transparent_40%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
-        </div>
+        <SectionBackdrop
+          src="/Gemini_Generated_Image_x5v3q5x5v3q5x5v3.png"
+          imageOpacity={0.14}
+          imagePosition="center top"
+          overlayVariant="accent"
+        />
         <div className="relative z-10 mx-auto w-full max-w-[1080px]">
           <div className="flex items-center gap-3 mb-6">
             <h2 className="text-[11px] font-mono uppercase tracking-[0.1em] text-[#3b82f6]">Experiencia</h2>
@@ -522,16 +517,12 @@ export function LandingPage() {
 
       {/* La Caja de Herramientas - Skills */}
       <section id="herramientas" className="relative flex min-h-[100svh] flex-col justify-center overflow-x-hidden px-4 pt-16 pb-24 sm:px-6 sm:py-16 md:min-h-screen md:pb-16">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/Gemini_Generated_Image_xwzg20xwzg20xwzg.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/45 via-[#0a0a0a]/70 to-[#0a0a0a]" />
-        </div>
+        <SectionBackdrop
+          src="/Gemini_Generated_Image_xwzg20xwzg20xwzg.png"
+          imageOpacity={0.18}
+          imagePosition="center"
+          overlayVariant="default"
+        />
         <div className="relative z-10 mx-auto w-full max-w-[680px]">
           <div className="mb-8 flex items-center gap-3 sm:mb-10">
             <h2 className="text-[11px] font-mono uppercase tracking-[0.1em] text-[#3b82f6]">La Caja de Herramientas</h2>
@@ -553,28 +544,58 @@ export function LandingPage() {
             ))}
           </div>
         </div>
-        {/* Scroll to next section */}
-        <div className="relative z-20 mt-8 flex justify-center pb-2 md:absolute md:bottom-8 md:left-1/2 md:mt-0 md:-translate-x-1/2 md:pb-0">
-          <button
-            type="button"
-            onClick={() => smoothScrollToTarget("top")}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#1f1f1f] bg-[#0a0a0a]/85 text-[#94a3b8] shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm transition hover:border-[#3b82f6] hover:text-[#e2e8f0]"
-            aria-label="Volver al inicio"
-          >
-            <ChevronUp className="w-5 h-5 text-[#71717a]" />
-          </button>
-        </div>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-[#1f1f1f] px-4 py-8 sm:px-6">
         <div className="mx-auto w-full max-w-[680px] text-center">
-          <p className="text-xs font-mono text-[#3b82f6]">
+          <button
+            type="button"
+            onClick={() => smoothScrollToTarget("top")}
+            className="text-xs font-mono text-[#3b82f6] transition hover:text-[#60a5fa]"
+            aria-label="Volver al inicio"
+          >
             Valentín Milocco · 2026
-          </p>
+          </button>
         </div>
       </footer>
     </main>
+  )
+}
+
+function SectionBackdrop({
+  src,
+  priority = false,
+  imageOpacity,
+  imagePosition,
+  overlayVariant,
+}: {
+  src: string
+  priority?: boolean
+  imageOpacity: number
+  imagePosition: string
+  overlayVariant: "hero" | "default" | "accent"
+}) {
+  const overlayClassName =
+    overlayVariant === "hero"
+      ? "section-overlay section-overlay-hero"
+      : overlayVariant === "accent"
+        ? "section-overlay section-overlay-accent"
+        : "section-overlay"
+
+  return (
+    <div className="absolute inset-0 z-0">
+      <Image
+        src={src}
+        alt=""
+        fill
+        priority={priority}
+        sizes="100vw"
+        className="section-bg-image"
+        style={{ opacity: imageOpacity, objectPosition: imagePosition }}
+      />
+      <div className={overlayClassName} />
+    </div>
   )
 }
 
